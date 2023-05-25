@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+</head>
+<body>
+      <script>
+            let array=[
+                  153,
+                  71,
+                  62,
+                  207,
+                  79,
+                  277,
+                  314,
+                  305,
+                  138,
+                  115,
+                  281,
+                  237,
+                  232,
+                  183,
+                  122,
+                  189,
+                  102,
+                  77,
+                  290,
+                  268,
+                  239,
+                  24,
+                  319,
+                  253,
+                  58,
+                  126,
+                  54,
+                  141,
+                  41,
+                  267,
+                  18,
+                  148,
+                  194,
+                  50,
+                  47,
+                  315,
+                  249,
+                  94,
+                  285,
+                  69,
+                  27,
+                  33,
+                  140,
+                  149,
+                  96,
+                  227,
+                  119,
+                  258,
+                  288,
+                  229,
+                  56,
+            ];
+      let target = 789948162;
+      let smaller;
+      let difference=target;
+      let multiplicator;
+      let mult;
+      let index;
+
+      for (i=0; i<array.length; i++){
+            let temp1 = Math.floor(target/array[i]);  //mažesnis daliklis
+            let temp2 = Math.ceil(target/array[i]);   //didesnis daliklis
+            let less = target-(array[i]*temp1);       // mažesnio daliklio sandaugos ir target skirtumas
+            let more = target-(array[i]*temp2);       //didesnio daliklio sandaugos ir target skirtumas
+            if (less <= more*(-1) ) {                  //nustatom kuris skaičius arčiau "target"
+                  smaller = less;
+                  multiplicator = temp1;              //fiksuojam daugiklį
+            } else {
+                  smaller = more*(-1);   
+                  multiplicator = temp2;              //fiksuojam daugiklį
+            }
+
+            if (difference > smaller) {               // fiksuojam artimiausią skaičių.
+                  difference = smaller;               //fiksuojam skirtumą.
+                  index=i;                        //fiksuojam vietą masyve.
+                  mult=multiplicator;
+            }
+            document.write("[", i ,"]", array[i], " --- ", less, " ", more, " ", difference, " ", mult, "[",index,"]<br/>");
+      }
+
+      let result = array[index] + mult;
+      document.write(result);
+// ----------------------------------
+
+      // difference = target;
+      // let numbers=[];
+      // for (let z=0; z<array.length; z++){
+      //       for (let x=0; x<array.length; x++){
+      //             if (z === x) continue;
+      //             let sandauga=array[z]*array[x];
+      //             let diff = target-sandauga;
+      //             if(diff<0)diff*=-1;
+
+      //             if(difference>diff){
+      //             numbers.push(array[z], array[x]);
+      //             difference=diff;
+      //             }
+      //             document.write("[",z,"] ","[",x,"] ", diff, "    ", difference, "<br />");
+      //       }
+      // }
+
+      // document.write(numbers[0]," ", numbers[1], "<br />")
+      // document.write(array[47]," ", array[10])
+      </script>
+</body>
+</html>
