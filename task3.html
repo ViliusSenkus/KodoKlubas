@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+</head>
+<body>
+      <script>
+            let arr=[3, 7, 8, 2, 7, 6, 7, 6, 4, 7];
+
+            for (x=0; x<50; x++){
+                  console.log("        raundas - ", x+1);
+
+                  let l=arr.length-1;
+                  let sum = arr[0] + arr[l];
+
+                  console.log("   skaiciu suma - ", sum);;
+                  if (sum<10){
+                        arr.push(sum);
+                  }else if (sum===10){
+                        arr.push(1)
+                  }else{
+                        arr.push(1);
+                        arr.push(sum-10);
+                  }
+                  console.log(" prideta i gala -", arr);
+
+                  l=arr.length-1;
+                  let c;
+                  if (arr[l]>arr[0]) c=arr[0];
+                  if (arr[l]<=arr[0]) c=arr[l];
+                 
+                  
+                  let removed = arr.slice(l-c+1);
+
+                  console.log("perkeliami skaiciai -",removed);
+                  arr.splice(l-c+1);
+                  arr.splice(0, 0, ...removed);
+                  console.log("  galinis variantas - ", arr);
+            }
+            
+            let suma=0;
+            for(x=0; x<arr.length; x++){
+                  suma+=arr[x];
+            }
+            console.log(suma);
+
+      </script>
+</body>
+</html>
