@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+</head>
+<body style="max-width: 1000px; margin: 10px auto;">
+      <h2 id="a"></h2>
+      <div id="b"></div>
+      <div id="c"></div>
+      <div id="d"></div>
+      <div id="e"></div>
+</body>
+
+<script>
+      const a=document.getElementById("a");
+      const b=document.getElementById("b");
+      const c=document.getElementById("c");
+      const d=document.getElementById("d");
+
+      let eilute =                        "nbgUrzzzASxxxtIfmnEtuyrNMasRWgmCVgfnfEteLIarWtrEUYBasNeYcvsaQXZjkXCWUglobkDFcvbnkASlHGjDglkfSFGqwwqDvJHKJbFalTeaMdFGJuewyKsRQWTYRNpoMEToP";
+
+      const klv_1="qwertyuiop";
+      const klv_2="asdfghjkl";
+      const klv_3="zxcvbnm";
+
+      // eilute = eilute.toLowerCase()
+      // .split("");
+      
+      
+
+      
+console.log(eilute);
+
+function remover(eilute){
+      let results=[];
+      let arr = eilute.split("");
+      let counter=0;
+      for (let y = 0; y < eilute.length-1; y++){
+            
+            let srch = (eilute.charAt(y) + eilute.charAt(y+1))
+            
+            for (let x = 0; x < klv_1.length-1; x++){
+                  let asm=`${klv_1.charAt(x)+klv_1.charAt(x+1)}`
+                  // let asm1 =`${klv_1.charAt(x)+klv_1.charAt(x+1).toUpperCase()}`;
+                  // let asm2 =`${klv_1.charAt(x).toUpperCase() +klv_1.charAt(x+1)}`;
+                  let abg =`${klv_1.charAt(x).toUpperCase() +klv_1.charAt(x+1).toUpperCase()}`;
+                  let asmr=`${klv_1.charAt(x+1)+klv_1.charAt(x)}`
+                  let abgr =`${klv_1.charAt(x+1).toUpperCase() +klv_1.charAt(x).toUpperCase()}`;
+
+                  let bsm=`${klv_2.charAt(x)+klv_2.charAt(x+1)}`
+                  // let bsm1 =`${klv_2.charAt(x)+klv_1.charAt(x+1).toUpperCase()}`;
+                  // let bsm2 =`${klv_2.charAt(x).toUpperCase() +klv_2.charAt(x+1)}`;
+                  let bbg =`${klv_2.charAt(x).toUpperCase() +klv_2.charAt(x+1).toUpperCase()}`;
+                  let bsmr=`${klv_2.charAt(x+1)+klv_2.charAt(x)}`
+                  let bbgr =`${klv_2.charAt(x+1).toUpperCase() +klv_2.charAt(x).toUpperCase()}`;
+
+                  let csm=`${klv_3.charAt(x)+klv_3.charAt(x+1)}`
+                  // let csm1 =`${klv_3.charAt(x)+klv_3.charAt(x+1).toUpperCase()}`;
+                  // let csm2 =`${klv_3.charAt(x).toUpperCase() +klv_3.charAt(x+1)}`;
+                  let cbg =`${klv_3.charAt(x).toUpperCase() +klv_3.charAt(x+1).toUpperCase()}`;
+                  let csmr=`${klv_3.charAt(x+1)+klv_3.charAt(x)}`
+                  let cbgr =`${klv_3.charAt(x+1).toUpperCase() +klv_3.charAt(x).toUpperCase()}`;
+
+                  // console.log(asm1, " ", asm2, " ", abg, " ", bsm1, " ", bsm2, " ", bbg, " ", csm1, " ", csm2, " ", cbg, " ",)
+
+                  // if (srch == asm1 || srch == asm2 || srch == abg || srch == bsm1 || srch == bsm2 || srch == bbg || srch == csm1 || srch == csm2 || srch == cbg  || srch == asm  || srch == bsm  || srch == csm ){
+                  if (srch == abg || srch == bbg || srch == cbg  || srch == asm  || srch == bsm  || srch == csm || srch == abgr || srch == bbgr || srch == cbgr  || srch == asmr  || srch == bsmr  || srch == csmr ){
+                        console.log("atitikimas", srch );
+                        results.push(y);
+                  }
+            }
+      }
+
+      console.log(results);
+
+      for (let i of results){
+            counter++
+            arr[i]="";
+            arr[i+1]="";
+      }
+      eilute=(arr.toString().replaceAll(",",""));
+      // console.log("is foro", eilute);
+      return eilute;
+}
+
+
+eilute1=remover(eilute);
+console.log("1 ",eilute1);
+
+eilute2=remover(eilute1);
+console.log("2 ", eilute2);
+
+eilute3=remover(eilute2);
+console.log("3 ", eilute3);
+
+eilute4=remover(eilute3);
+console.log("4 ", eilute4);
+
+eilute5=remover(eilute4);
+console.log("5 ", eilute5);
+
+eilute6=remover(eilute5);
+console.log("6 ", eilute6);
+
+eilute7=remover(eilute6);
+console.log("7 ", eilute7);
+
+eilute8=remover(eilute7);
+console.log("8 ", eilute8);
+
+eilute9=remover(eilute8);
+console.log("9", eilute9);
+
+eilute10=remover(eilute9);
+console.log("10 ", eilute10);
+// eilute=remover(eilute);
+// console.log("8 ", eilute);
+// eilute=remover(eilute);
+// console.log("8 ", eilute);
+// eilute=remover(eilute);
+
+
+
+</script>
+</html>
