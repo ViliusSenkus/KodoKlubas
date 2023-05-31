@@ -6,8 +6,8 @@ const e=document.getElementById("e");
 
 const priebalses = "BCČDFGHJKLMNPRSŠTVZŽ";
 const balses = "AĄEĘĖIĮYOUŪŲ";
-const diakrit = "ČŠŽĄĘĮŲŪIĖJ";
-const uzdaros = "DPOB";
+const diakrit = "ČŠŽ";
+const uzdaros = "DPO";
 const arr=["T", "E", "L", "I", "A"];
 const type = [priebalses, balses, diakrit, uzdaros];
 
