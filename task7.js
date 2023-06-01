@@ -22,13 +22,12 @@ const e=document.getElementById("e");
 // 6. pakeičiame tree.arr pirmą reikšmę masyvais iš line sukurto naujo masyvų masyvo
 
 const num = 5;
-const addArr = [4,5,6]
-const arr = [7,8,9]
+const addArr = [1,2,3]
 let counter = 0;
 
 class Tree{
     
-    arr = [[1,6],6];
+    arr = [1,2,3];
 
     checkFirstElementSum(){
         let sum = 0;
@@ -51,10 +50,12 @@ class Tree{
     compareToNum(){
         let element = this.checkFirstElementSum()
         if (element > num){
-            this.arr.shift();
+            // this.arr.shift();
+            return false;
         } else if (element === num){
             counter++;
-            this.arr.shift();
+            // this.arr.shift();
+            return false;
         } else {
             return this.arr[0]
         }
@@ -65,17 +66,36 @@ class List{
     constructor(value){
         this.arr=value;
     }
+
+    branchIncreasing(){
+        console.log("gautas elementas i pridejima - ", this.arr)
+        let newArray = [];
+        for (let x=0; x<addArr.length; x++){
+            newArray.push([...this.arr, addArr[x]])
+        }
+        console.log("naujas masyvas - ", newArray);
+        return newArray;
+    }
 }
+
+// ----- PROCESAS --------
 
 let tree = new Tree();
 
 while(tree.arr.length > 0){
-    tree.compareToNum();
-    if (tree.arr.length > 0){
+    console.log("tree arr whilo pradzioje - ", tree.arr, "pirmas elementas - ", tree.arr[0])
+    if (!tree.compareToNum()){
+        tree.arr.shift()
+    } else {
+        if (!Array.isArray(tree.arr[0])){
+            tree.arr[0] = [tree.arr[0]];
+        }
         const list = new List(tree.arr[0]);
-        console.log("List - ", list.arr);
+        tree.arr.splice(0,1,...list.branchIncreasing());
+        console.log("tree masyvas - ", tree.arr);
     }
-    console.log(tree.arr);
+    console.log("atitikimai - ", counter);
+    console.log("------------------");
     
 } 
 
