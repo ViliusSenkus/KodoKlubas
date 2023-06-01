@@ -4,116 +4,82 @@ const c=document.getElementById("c");
 const d=document.getElementById("d");
 const e=document.getElementById("e");
 
-// const num=2022;
-// const arr=[7,3,21,12,13,48,43,31,15,2,33];
+// ------------------------------- //
+//           ALGORITMAS            //
+// ------------------------------- //
+// 1.  nustatome pirmo tree elemento narių sumą  
+//              --- checkFirst():
+//              ištrinami ribą viršiję elementai,
+//              priskaičiuojami pasiekę ribą elmenetai ir ištrinami
+//              GRAŽINAMA - pirmas nepasiekęs ribos elementas(masyvas);
+// 1.1 jeigu suma > num - triname elementą
+// 1.2 jeigu suma === num - prie counterio pridedame 1 ir triname elementą
+// 1.3 jeigu suma < num - perduodame tree.arr pirmą elementą Line objektui.
+// 2.
+// 3. nustatome paskutinio elemento reikšmę
+// 4. pagal paskutinio elemento reikšmę surandame jo eilę pridedamų skaitmenų masyve
+// 5. kuriame naują masyvą kiekvienam elementui prie nuskaityto masyvo pridedant po vis kitą pridedamų skaitmenų masyvo reikšmę(pradedant nuo )
+// 6. pakeičiame tree.arr pirmą reikšmę masyvais iš line sukurto naujo masyvų masyvo
+
+const num = 5;
+const addArr = [4,5,6]
+const arr = [7,8,9]
 let counter = 0;
-const num=5;
-let arr=[1,2,3];
 
-// function cycle(){
-//     for(let el = 0; el < arr.length; el++){
-//         const division = Math.ceil( num / el );
+class Tree{
     
-//         for (let x = division; x > 0; x--){
+    arr = [[1,6],6];
 
-//             if (x * el > num) continue;
-
-//             if (x * el === num){
-//                 counter++;
-//                 continue;
-//             }
-
-//                 // tikriname ar dar yra masyve kitų skaičių
-
-//             if(x * el < num && arr[arr.indexOf(el)+1]){
-
-//                 let sum = x * el;         //suskaiciuojame kiek turime sumos
-//                 let difference = num - sum; //skaiciuojam kiek truksta iki 2022
-        
-//                 const div = Math.ceil( difference / el ); //surandame kiek trūksta iki 2022
-
-//                 for (let y = arr[arr.indexOf(el)+1]; y<arr.length; y++){
-            
-//                 }
-                
-//                 // cia turime kartoti visa forEacha nuo el+1;
-
-//             } 
-                
-//         }
-//     }
-//     return counter;
-// }
-
-// class Node{
-
-//     cosntructor(value, index, sum){
-//         this.value = value;
-//         this.next = arr[index];
-//         this.sum = 0;
-//     }
-
-//     insert(value){
-//         value=0;
-//     }
-
-// }
-
-const tree = [0];
-let temp =[];
-
-
-function add(){
-    for(let i = 0; i < tree.length; i++ ){
-        
-        for(let el = 0; el < arr.length; el++){
-            let sum = arr[el]+tree[i];
-            console.log(sum)
-            if(sum > num){
-                continue;
-            }else if(sum < num){
-                temp.push(sum);    
-            }else if (sum === num){
-                counter ++;
-            }
-            console.log(temp)
+    checkFirstElementSum(){
+        let sum = 0;
+        if (Array.isArray(this.arr[0])){
+            sum = this.getSum(this.arr[0])
+        } else{
+            sum = this.arr[0]
         }
-        tree.splice(i, 1, temp);
-        temp = [];
+        return sum;
     }
-    c.innerHTML=tree[0];
     
-    return tree;
+    getSum(array){
+        let sum = 0;
+        array.forEach(element => {
+            sum +=element
+        });
+        return sum;
+    }
+
+    compareToNum(){
+        let element = this.checkFirstElementSum()
+        if (element > num){
+            this.arr.shift();
+        } else if (element === num){
+            counter++;
+            this.arr.shift();
+        } else {
+            return this.arr[0]
+        }
+    }
 }
 
+class List{
+    constructor(value){
+        this.arr=value;
+    }
+}
 
-add();
-add();
+let tree = new Tree();
 
+while(tree.arr.length > 0){
+    tree.compareToNum();
+    if (tree.arr.length > 0){
+        const list = new List(tree.arr[0]);
+        console.log("List - ", list.arr);
+    }
+    console.log(tree.arr);
+    
+} 
 
-
-
-// function count(){
-//     for(let el = 0; el < arr.length; el++){
-//         console.log("paimtas elemenetas - ", arr[el], " ", num);
-//         for (let x = 0; x < tree.length; x++){
-//             tree.push(arr[el]+1)
-//         }
-
-//         if (arr[el] > num){
-//             arr.splice(el, 1);
-//             el=el-1;
-//         } else if (arr[el] === num){
-//             arr.splice(el, 1);
-//             el=el-1;
-//             counter++;
-//         } else{
-//             count();
-//         }
-//         console.log(arr);
-//     }
-//     return counter;
-// }
-
-// console.log("working");
-// console.log(count());
+// console.log(tree.checkFirstElementSum());
+// tree.compareToNum();
+// console.log(tree.arr);
+// console.log("counteris ", counter)
